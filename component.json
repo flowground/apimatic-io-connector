@@ -1,0 +1,63 @@
+{
+    "title": "APIMATIC API Transformer",
+    "description": "Transform API Descriptions from/to various formats",
+    "docsUrl": "https://apimatic.io/transformer",
+    "url": "https://api.apis.guru/v2/specs/apimatic.io/1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://apimatic.io/api/transform",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "auth_api-key": {
+                "label": "apikey (api-key)",
+                "viewClass": "TextFieldView"
+            },
+            "auth_username": {
+                "label": "Username (basic)",
+                "viewClass": "TextFieldView"
+            },
+            "auth_password": {
+                "label": "Password (basic)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "ConvertAPI": {
+            "main": "./lib/actions/ConvertAPI.js",
+            "title": "Transform API Descriptions from/to various formats",
+            "description": "Transform API Descriptions from/to various formats e.g., Swagger, API Blueprint, RAML, WADL, Google Discovery, I/O Docs.\n\n### INPUTS\n* API Blueprint\n* Swagger 1.0 - 1.2\n* Swagger 2.0 JSON\n* Swagger 2.0 YAML\n* WADL - W3C 2009\n* Google Discovery\n* RAML 0.8\n* I/O Docs - Mashery\n* HAR 1.2\n* Postman Collection 1.0 - 2.0\n* APIMATIC Format\n* Mashape\n\n### OUTPUTS\n* API Blueprint\n* Swagger 1.2\n* Swagger 2.0 JSON\n* Swagger 2.0 YAML\n* WADL - W3C 2009\n* RAML 0.8 - 1.0\n* APIMATIC Format",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ConvertAPI.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

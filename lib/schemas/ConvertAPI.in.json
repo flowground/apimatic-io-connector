@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "format": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "swagger10",
+                "swagger20",
+                "swaggeryaml",
+                "apiblueprint",
+                "wadl2009",
+                "raml",
+                "apimatic"
+            ]
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
